@@ -90,24 +90,28 @@ const Solution = () => {
             <h3 className="font-display text-2xl font-bold text-dark mb-8">Le changement structurel</h3>
             <div className="flex flex-col">
               
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-red-light/50 border border-red/30 rounded-t-xl p-4 text-center font-display font-bold text-red">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="bg-red-light/50 border border-red/30 rounded-xl md:rounded-t-xl md:rounded-b-none p-4 text-center font-display font-bold text-red">
                   Avant <span className="opacity-50 line-through">IdentiGuinée</span>
                 </div>
-                <div className="bg-green-light/50 border border-green/30 rounded-t-xl p-4 text-center font-display font-bold text-green-dark">
+                <div className="hidden md:block bg-green-light/50 border border-green/30 rounded-t-xl p-4 text-center font-display font-bold text-green-dark">
                   Avec IdentiGuinée
                 </div>
               </div>
 
               {comparisons.map((row, i) => (
-                <div key={i} className="grid grid-cols-2 gap-4 mb-4">
+                <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 md:mb-4">
                   <div className="bg-red-light/30 border border-red/10 rounded-xl p-5 flex items-start gap-3">
                     <XCircle className="w-5 h-5 text-red shrink-0 mt-0.5" />
-                    <p className="font-body text-text-muted text-sm">{row.before}</p>
+                    <p className="font-body text-text-muted text-sm leading-relaxed">{row.before}</p>
                   </div>
-                  <div className="bg-green-light/30 border border-green/20 rounded-xl p-5 flex items-start gap-3">
+                  <div className="bg-green-light/30 border border-green-dark/10 rounded-xl p-5 flex items-start gap-3">
+                    <div className="flex items-center gap-2 md:hidden mb-2">
+                      <div className="w-2 h-2 rounded-full bg-green"></div>
+                      <span className="text-[10px] font-bold text-green uppercase tracking-wider">Solution</span>
+                    </div>
                     <CheckCircle2 className="w-5 h-5 text-green shrink-0 mt-0.5" />
-                    <p className="font-body text-text-primary font-medium text-sm">{row.after}</p>
+                    <p className="font-body text-text-primary font-medium text-sm leading-relaxed">{row.after}</p>
                   </div>
                 </div>
               ))}

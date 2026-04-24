@@ -107,8 +107,8 @@ const Blockchain = () => {
           <h3 className="font-heading font-bold text-xl text-white mb-2 text-center">Flux NaissanceChain</h3>
           <p className="text-sm text-white/50 text-center mb-8">Comment un document est généré automatiquement</p>
 
-          <div className="rounded-2xl p-6 sm:p-8 border border-white/10 overflow-x-auto" style={{ backgroundColor: '#163122' }}>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 min-w-max sm:min-w-0 mx-auto">
+          <div className="rounded-2xl p-6 sm:p-8 border border-white/10 overflow-hidden" style={{ backgroundColor: '#163122' }}>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-4 mx-auto">
               {flowNodes.map((node, i) => (
                 <React.Fragment key={node.label}>
                   <motion.div 

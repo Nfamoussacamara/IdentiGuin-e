@@ -4,8 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-bg text-text-primary font-body antialiased selection:bg-green selection:text-white;
-    overflow-x: hidden;
+    @apply bg-bg text-text-primary font-body antialiased selection:bg-green selection:text-white overflow-x-hidden;
   }
   
   body::before {
@@ -40,8 +39,7 @@
   }
   
   .glass-card-dark {
-    background-color: rgba(22, 49, 34, 0.8);
-    @apply backdrop-blur-md border border-white/10 shadow-md;
+    @apply bg-[#163122]/80 backdrop-blur-md border border-white/10 shadow-md;
   }
 
   .animate-flow-horizontal {

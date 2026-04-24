@@ -166,25 +166,26 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Top Badge */}
+            {/* Top Badge */}
             <div className="flex items-center gap-3 mb-6">
               <span className="px-3 py-1 bg-green/10 text-green border border-green/20 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]">
                 Edition 2026 · République de Guinée
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-display font-black text-white mb-6 leading-tight tracking-[-0.05em] whitespace-nowrap">
+            <h1 className="text-[2.8rem] sm:text-7xl md:text-8xl font-display font-black text-white mb-6 leading-tight tracking-[-0.05em] whitespace-nowrap">
               <span className="inline-block mr-[-0.03em]">Identi</span>
               <span className="text-green inline-block">Guinée</span>
             </h1>
 
-            <p className="text-xl md:text-2xl font-body text-white/70 mb-10 leading-relaxed max-w-xl">
+            <p className="text-lg md:text-2xl font-body text-white/70 mb-10 leading-relaxed max-w-xl">
               Le portail national de l'identité numérique décentralisée. 
-              <span className="block mt-4 text-lg text-white/50 italic font-light">
+              <span className="block mt-4 text-base md:text-lg text-white/50 italic font-light">
                 Zéro corruption. Zéro intermédiaire. 100% souverain.
               </span>
             </p>
 
-            <div className="flex flex-wrap items-center gap-5">
+            <div className="flex flex-wrap items-center gap-5 mt-4">
               <motion.a 
                 ref={heroMagRef}
                 animate={{ x: heroMagPos.x, y: heroMagPos.y }}
@@ -201,12 +202,12 @@ const Hero = () => {
               <div className="flex items-center gap-4 px-6 py-3 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
                 <div className="flex -space-x-2">
                   {[
-                    "https://images.unsplash.com/photo-1523910088395-dce257a415a2?w=120&h=120&auto=format&fit=crop", // Homme charismatique
-                    "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=120&h=120&auto=format&fit=crop", // Femme professionnelle
-                    "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=120&h=120&auto=format&fit=crop"  // Homme souriant
+                    "/Guinée tech lab/Camara N'famoussa.jpeg",
+                    "/Guinée tech lab/Diallo Sonna Halimatou.jpeg",
+                    "/Guinée tech lab/KABA Sanoussy.jpeg"
                   ].map((url, i) => (
                     <div key={i} className="w-9 h-9 rounded-full border-2 border-[#0D1B12] bg-green/20 overflow-hidden shadow-sm">
-                      <img src={url} alt="citizen" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110" />
+                      <img src={encodeURI(url)} alt="citizen" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110" />
                     </div>
                   ))}
                 </div>
@@ -218,18 +219,18 @@ const Hero = () => {
             </div>
 
             {/* Quick trust indicators */}
-            <div className="mt-16 flex items-center gap-8 opacity-40">
+            <div className="mt-12 flex items-center gap-8 opacity-40">
               <div className="flex items-center gap-2 text-white">
                 <ShieldCheck className="w-5 h-5" />
-                <span className="text-xs font-bold uppercase tracking-widest">Souverain</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest">Souverain</span>
               </div>
               <div className="flex items-center gap-2 text-white">
                 <Database className="w-5 h-5" />
-                <span className="text-xs font-bold uppercase tracking-widest">Immutable</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest">Immutable</span>
               </div>
               <div className="flex items-center gap-2 text-white">
                 <Fingerprint className="w-5 h-5" />
-                <span className="text-xs font-bold uppercase tracking-widest">Biométrique</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest">Biométrique</span>
               </div>
             </div>
           </motion.div>

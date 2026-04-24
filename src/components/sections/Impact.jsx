@@ -90,7 +90,7 @@ export default function Impact() {
                 <h3 className="font-heading font-bold text-lg text-text-primary leading-tight">Réduction des inégalités</h3>
               </div>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed mb-6">
+            <p className="text-base text-text-muted leading-relaxed mb-6">
               <strong className="text-text-primary font-bold">Les citoyens les plus pauvres accèdent enfin aux documents auxquels ils ont droit</strong>, sans payer de pot-de-vin. L'automatisation supprime la barrière économique de la corruption.
             </p>
             <div className="bg-primary/5 rounded-xl p-4 border border-primary/10">
@@ -147,22 +147,22 @@ export default function Impact() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-16 relative z-10">
               <div className="text-center">
-                <p className="font-heading font-bold text-6xl sm:text-7xl text-white">
+                <p className="font-heading font-bold text-5xl sm:text-7xl text-white">
                   <AnimatedCounter target={0} suffix="" />
                 </p>
                 <p className="text-sm font-semibold font-heading text-white/80 mt-3 uppercase tracking-wider">Pot-de-vin</p>
               </div>
               <div className="hidden sm:block w-px h-20 bg-white/10"></div>
               <div className="text-center">
-                <p className="font-heading font-bold text-6xl sm:text-7xl text-white">
-                  <AnimatedCounter target={2} suffix="" /><span className="text-4xl">min</span>
+                <p className="font-heading font-bold text-5xl sm:text-7xl text-white">
+                  <AnimatedCounter target={2} suffix="" /><span className="text-3xl sm:text-4xl">min</span>
                 </p>
                 <p className="text-sm font-semibold font-heading text-white/80 mt-3 uppercase tracking-wider">Délai d'obtention</p>
               </div>
               <div className="hidden sm:block w-px h-20 bg-white/10"></div>
               <div className="text-center">
-                <p className="font-heading font-bold text-6xl sm:text-7xl text-white">
-                  <AnimatedCounter target={100} suffix="" /><span className="text-4xl">%</span>
+                <p className="font-heading font-bold text-5xl sm:text-7xl text-white">
+                  <AnimatedCounter target={100} suffix="" /><span className="text-3xl sm:text-4xl">%</span>
                 </p>
                 <p className="text-sm font-semibold font-heading text-white/80 mt-3 uppercase tracking-wider">Auditabilité</p>
               </div>

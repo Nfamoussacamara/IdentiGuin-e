@@ -1,0 +1,118 @@
+MIABE HACKATHON 2026 | Cadre de Référence | DAROLLO TECHNOLOGIES CORPORATION 
+DTC — Darollo Technologies Corporation | www.miabehackathon.com | La Blockchain, levier du développement durable africain — Page 120 
+🇬🇳 GUINÉE 
+D06 — Identité numérique & Registres civils 
+PROJET GN-02 
+IdentiGuinée 
+MBH 
+2026 
+Edition 
+ODD 10 — Inégalités réduites   ·   ODD 16 — Institutions efficaces 
+ 
+CONTEXTE ET ENJEUX 
+Obtenir un document d'identité officiel en 
+Guinée est un parcours semé de pots -
+de-vin. Transparency International place 
+la Guinée au rang 150/180 dans l'Indice 
+de Perception de la Corruption. Des 
+enquêtes documentent que 60 à 70 % 
+des Guinéens ont versé un  paiement 
+informel lors d'une démarche d'état civil. 
+Ces pratiques excluent les plus pauvres, 
+ceux qui ne peuvent pas payer. 
+DONNEES CLES 
+▸ La Guinée est classée 150/180 dans l'Indice de Perception 
+de la Corruption 2023 (Transparency International). 
+▸ 60 à 70 % des Guinéens ont versé un paiement informel 
+lors de démarches d'état civil (TI Guinée, 2022). 
+▸ Moins de 25 % des communes guinéennes disposent d'un 
+système informatique d'état civil. 
+▸ Un faux passeport guinéen se vend entre 200 000 et 500 
+000 GNF sur le marché informel. 
+▸ La corruption dans l'état civil facilite la fraude électorale et 
+le trafic d'identité. 
+ 
+ PROBLÈME CENTRAL 
+La délivrance de documents d'identité en Guinée passe par des intermédiaires humains qui 
+ralentissent le processus pour exiger des paiements informels. Plus la procédure est opaque 
+et manuelle, plus elle crée d'opportunités de corruption. La solution doit rendre la délivrance 
+de documents d'identité aussi automatique, transparente et sans intermédiaire que possible. 
+ 
+ 
+CE QUE LA SOLUTION DOIT ACCOMPLIR 
+▸ Permettre à un citoyen de demander un 
+document d'identité depuis un portail en ligne 
+ou une application mobile. 
+▸ Automatiser la vérification de l'identité en 
+croisant la demande avec le registre de 
+naissances existant. 
+▸ Générer automatiquement le document 
+certifié sans intervention humaine pouvant 
+donner lieu à corruption. 
+▸ Permettre aux administrations de vérifier 
+instantanément l'authenticité d'un document 
+délivré. 
+UTILISATEURS FINAUX 
+▸ Citoyens guinéens demandant des documents d'identité 
+▸ Administrations guinéennes délivrant des documents 
+▸ Établissements scolaires, hôpitaux et employeurs vérifiant 
+des identités 
+▸ Ministère de l'Administration du Territoire de Guinée 
+IMPACT ATTENDU 
+Un système de délivrance automatique supprime les 
+opportunités de corruption. Les citoyens les plus pauvres 
+accèdent enfin aux documents auxquels ils ont droit. La 
+confiance dans les institutions augmente. 
+ 
+⬡ POURQUOI LA BLOCKCHAIN ?  La blockchain rend le processus transparent et auditable : chaque demande, 
+vérification et document délivré est enregistré. L'automatisation par smart contract supprime le rôle 
+discrétionnaire de l'agent corruptible. Les documents portent une signature cry ptographique vérifiable 
+instantanément. 
+ 
+MIABE HACKATHON 2026 | Cadre de Référence | DAROLLO TECHNOLOGIES CORPORATION 
+DTC — Darollo Technologies Corporation | www.miabehackathon.com | La Blockchain, levier du développement durable africain — Page 121 
+PHASE 1 — Présélection 
+▸ Documenter la corruption dans l'état civil 
+guinéen : exemples, montants, 
+conséquences sur les populations les plus 
+pauvres 
+▸ Concevoir les maquettes visuelles du 
+portail citoyen et de l'interface 
+administrative automatisée 
+▸ Créer un site vitrine présentant le 
+problème de corruption et la solution 
+d'automatisation 
+▸ Décrire la composante blockchain : 
+comment le document certifié est généré 
+automatiquement, comment la vérification 
+fonctionne, quel est le lien avec 
+NaissanceChain 
+PHASE 2 — Demi-finale 
+▸ Portail web citoyen : 
+soumettre une demande, suivre 
+le statut, télécharger le 
+document certifié 
+▸ Automatisation de la 
+vérification croisée avec le 
+registre de naissances 
+▸ Génération d'un document 
+certifié avec identifiant 
+blockchain et QR code 
+▸ Démo live : citoyen soumet → 
+vérification automatique → 
+document reçu en 2 minutes 
+sans agent intermédiaire 
+PHASE 3 — Finale 
+▸ MVP complet avec 
+portail citoyen et 
+administration intégrés 
+▸ Vérification par les tiers : 
+scanner un document → 
+authentique ou faux en 3 
+secondes 
+▸ Documentation et pitch 
+10 min : nombre de pots-
+de-vin éliminés et 
+économies pour les 
+citoyens guinéens 
+  

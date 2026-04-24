@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-text-primary font-body antialiased selection:bg-green selection:text-white;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-dark;
+  }
+}
+
+@layer utilities {
+  .reveal-on-scroll {
+    @apply opacity-100; /* Par défaut visible si pas de script, sinon l'utilisateur l'activera */
+  }
+  
+  .font-mono-hash {
+    @apply font-mono tracking-tighter text-xs md:text-sm;
+  }
+
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/20 shadow-md;
+  }
+  
+  .glass-card-dark {
+    background-color: rgba(22, 49, 34, 0.8);
+    @apply backdrop-blur-md border border-white/10 shadow-md;
+  }
+
+  .animate-flow-horizontal {
+    animation: flow-horizontal 1s linear infinite;
+  }
+  
+  .animate-flow-vertical {
+    animation: flow-vertical 1s linear infinite;
+  }
+}
+
+@keyframes flow-horizontal {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes flow-vertical {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -24; }
+}

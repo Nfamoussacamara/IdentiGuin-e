@@ -139,9 +139,9 @@ export default function Impact() {
 
         {/* Big Impact Statement */}
         <div className="mb-16 reveal-on-scroll">
-          <div className="rounded-[2rem] p-10 sm:p-16 text-center relative overflow-hidden" style={{ backgroundColor: '#199756' }}>
+          <div className="rounded-[2rem] p-10 sm:p-16 text-center relative overflow-hidden bg-green">
             {/* Texture */}
-            <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("/kente-pattern.svg")', backgroundSize: '150px' }}></div>
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("/kente-pattern.svg")', backgroundSize: '150px' }}></div>
             
             <p className="text-xs font-semibold font-heading text-white uppercase tracking-widest mb-10 relative z-10">L'impact en chiffres</p>
             
@@ -172,7 +172,7 @@ export default function Impact() {
 
         {/* Citation & Meta */}
         <div className="reveal-on-scroll max-w-4xl">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="#199756" className="mb-6 opacity-20">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" className="mb-6 opacity-20 text-green">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
           </svg>
           <p className="font-heading text-xl sm:text-2xl text-text-primary leading-relaxed mb-6 italic">

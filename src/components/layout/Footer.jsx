@@ -3,9 +3,9 @@ import { Shield } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="relative pt-16 pb-8 overflow-hidden" style={{ backgroundColor: '#199756' }}>
+    <footer className="relative pt-16 pb-8 overflow-hidden bg-green">
       {/* Motif Kente en overlay */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+      <div className="absolute inset-0 opacity-[0.1] pointer-events-none" 
            style={{ backgroundImage: 'url("/kente-pattern.svg")', backgroundSize: '100px' }}></div>
       
       <motion.div 

@@ -13,7 +13,7 @@ const StepCard = ({ number, title, icon: Icon, description, isLast }) => {
       className="group relative glass-card rounded-3xl p-6 h-full flex flex-col items-start transition-all cursor-default"
     >
       {/* Number Background */}
-      <span className="absolute top-4 right-6 text-2xl font-display font-extrabold text-green/5 select-none">
+      <span className="absolute top-4 right-6 text-4xl font-display font-black text-green/30 select-none">
         {number.toString().padStart(2, '0')}
       </span>
 

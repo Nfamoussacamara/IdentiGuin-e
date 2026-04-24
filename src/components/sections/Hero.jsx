@@ -173,14 +173,14 @@ const Hero = () => {
               </span>
             </div>
 
-            <h1 className="font-display font-black text-white mb-6 leading-[1.1] tracking-[-0.04em] whitespace-nowrap" style={{ fontSize: 'clamp(2rem, 10vw, 7rem)' }}>
+            <h1 className="font-display font-black text-white mb-6 leading-[1.1] tracking-[-0.04em]" style={{ fontSize: 'clamp(1.8rem, 7vw, 5.5rem)' }}>
               <span className="inline-block mr-[-0.03em]">Identi</span>
               <span className="text-green inline-block">Guinée</span>
             </h1>
 
-            <p className="font-body text-white/70 mb-10 leading-relaxed max-w-xl" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
+            <p className="font-body text-white/70 mb-10 leading-relaxed max-w-xl" style={{ fontSize: 'clamp(0.9rem, 2vw, 1.2rem)' }}>
               Le portail national de l'identité numérique décentralisée. 
-              <span className="block mt-4 text-white/50 italic font-light" style={{ fontSize: 'clamp(0.85rem, 2.5vw, 1.15rem)' }}>
+              <span className="block mt-4 text-white/50 italic font-light" style={{ fontSize: 'clamp(0.8rem, 1.8vw, 1rem)' }}>
                 Zéro corruption. Zéro intermédiaire. 100% souverain.
               </span>
             </p>

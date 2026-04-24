@@ -131,7 +131,7 @@ const Blockchain = () => {
                       <svg width="32" height="16" viewBox="0 0 32 16">
                         <defs>
                           <linearGradient id={`arrow-grad-${i}`} x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stopColor="#199756"/>
+                            <stop offset="0%" stopColor="#008C44"/>
                             <stop offset="100%" stopColor="#BFA15F"/>
                           </linearGradient>
                         </defs>
@@ -151,7 +151,7 @@ const Blockchain = () => {
                       <svg width="16" height="32" viewBox="0 0 16 32">
                         <defs>
                           <linearGradient id={`arrow-grad-mob-${i}`} x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stopColor="#199756"/>
+                            <stop offset="0%" stopColor="#008C44"/>
                             <stop offset="100%" stopColor="#BFA15F"/>
                           </linearGradient>
                         </defs>

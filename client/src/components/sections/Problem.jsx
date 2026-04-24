@@ -259,6 +259,24 @@ export default function Problem() {
                   <div className="w-1.5 h-1.5 rounded-full bg-danger mt-1.5 flex-shrink-0"></div>
                   <p className="text-xs text-text-muted leading-relaxed"><strong className="text-text-primary font-bold">Cahier des charges MIABE 2026</strong> — moins de 25% des communes informatisées</p>
                 </div>
+                
+                <div className="mt-5 pt-5 border-t border-border">
+                  <a 
+                    href="/rapport_corruption_guinee_v2.pdf" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-danger/10 text-danger border border-danger/20 rounded-xl text-[11px] font-bold font-heading hover:bg-danger/20 transition-all group w-full justify-center"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                      <line x1="16" y1="13" x2="8" y2="13"/>
+                      <line x1="16" y1="17" x2="8" y2="17"/>
+                      <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    CONSULTER L'ANALYSE COMPLÈTE (PDF)
+                  </a>
+                </div>
               </div>
             </div>
 

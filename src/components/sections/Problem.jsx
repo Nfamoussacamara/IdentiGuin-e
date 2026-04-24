@@ -166,7 +166,7 @@ export default function Problem() {
           <div className="reveal-on-scroll">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-danger/20">
-                  <img src={encodeURI("/Guinée tech lab/Abdoul Aziz Diallo.jpeg")} alt="Citizen" className="w-full h-full object-cover grayscale" />
+                  <img src={encodeURI("/Guinée tech lab/profil.jpeg")} alt="Citizen" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-heading font-bold text-xl text-text-primary">
                   Parcours d'un citoyen aujourd'hui

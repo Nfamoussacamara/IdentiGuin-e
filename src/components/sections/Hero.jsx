@@ -202,12 +202,12 @@ const Hero = () => {
               <div className="flex items-center gap-4 px-6 py-3 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
                 <div className="flex -space-x-2">
                   {[
-                    "/Guinée tech lab/Camara N'famoussa.jpeg",
+                    "/Guinée tech lab/Abdoul Aziz Diallo.jpeg",
                     "/Guinée tech lab/Diallo Sonna Halimatou.jpeg",
                     "/Guinée tech lab/KABA Sanoussy.jpeg"
                   ].map((url, i) => (
                     <div key={i} className="w-9 h-9 rounded-full border-2 border-[#0D1B12] bg-green/20 overflow-hidden shadow-sm">
-                      <img src={encodeURI(url)} alt="citizen" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110" />
+                      <img src={encodeURI(url)} alt="citizen" className="w-full h-full object-cover transition-all duration-500 hover:scale-110" />
                     </div>
                   ))}
                 </div>

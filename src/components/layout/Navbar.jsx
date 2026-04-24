@@ -34,6 +34,7 @@ const Navbar = () => {
     { name: 'Portail', href: '#portal' },
     { name: 'Blockchain', href: '#blockchain' },
     { name: 'Impact', href: '#impact' },
+    { name: 'Équipe', href: '#equipe' },
   ];
 
   return (

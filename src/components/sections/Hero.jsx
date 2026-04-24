@@ -168,24 +168,24 @@ const Hero = () => {
             {/* Top Badge */}
             {/* Top Badge */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="px-3 py-1 bg-green/10 text-green border border-green/20 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]">
-                Edition 2026 · République de Guinée
+              <span className="px-3 py-1 bg-green/10 text-green border border-green/20 rounded-full font-bold uppercase" style={{ fontSize: 'clamp(8px, 2.5vw, 10px)', letterSpacing: '0.2em' }}>
+                Édition 2026 · République de Guinée
               </span>
             </div>
 
-            <h1 className="text-[2.8rem] sm:text-7xl md:text-8xl font-display font-black text-white mb-6 leading-tight tracking-[-0.05em] whitespace-nowrap">
+            <h1 className="font-display font-black text-white mb-6 leading-[1.1] tracking-[-0.04em] whitespace-nowrap" style={{ fontSize: 'clamp(2rem, 10vw, 7rem)' }}>
               <span className="inline-block mr-[-0.03em]">Identi</span>
               <span className="text-green inline-block">Guinée</span>
             </h1>
 
-            <p className="text-lg md:text-2xl font-body text-white/70 mb-10 leading-relaxed max-w-xl">
+            <p className="font-body text-white/70 mb-10 leading-relaxed max-w-xl" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
               Le portail national de l'identité numérique décentralisée. 
-              <span className="block mt-4 text-base md:text-lg text-white/50 italic font-light">
+              <span className="block mt-4 text-white/50 italic font-light" style={{ fontSize: 'clamp(0.85rem, 2.5vw, 1.15rem)' }}>
                 Zéro corruption. Zéro intermédiaire. 100% souverain.
               </span>
             </p>
 
-            <div className="flex flex-wrap items-center gap-5 mt-4">
+            <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-4 mt-4">
               <motion.a 
                 ref={heroMagRef}
                 animate={{ x: heroMagPos.x, y: heroMagPos.y }}
@@ -194,19 +194,19 @@ const Hero = () => {
                 href="https://stitch.withgoogle.com/preview/4670336962817990775?node-id=b9e984092259499dbd4dc34fbfa2b8d1" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green text-white px-10 py-4 rounded-xl font-body font-bold text-lg hover:bg-green-dark transition-shadow flex items-center gap-3 group"
+                className="bg-green text-white px-8 py-4 rounded-xl font-body font-bold hover:bg-green-dark transition-shadow flex items-center justify-center gap-3 group" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)' }}
               >
                 Accéder au Portail
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
               </motion.a>
-              <div className="flex items-center gap-4 px-6 py-3 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
-                <div className="flex -space-x-2">
+              <div className="flex items-center gap-4 px-5 py-3 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
+                <div className="flex -space-x-2 shrink-0">
                   {[
                     "/Guinée tech lab/Abdoul Aziz Diallo.jpeg",
                     "/Guinée tech lab/Diallo Sonna Halimatou.jpeg",
                     "/Guinée tech lab/KABA Sanoussy.jpeg"
                   ].map((url, i) => (
-                    <div key={i} className="w-9 h-9 rounded-full border-2 border-[#0D1B12] bg-green/20 overflow-hidden shadow-sm">
+                    <div key={i} className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-[#0D1B12] bg-green/20 overflow-hidden shadow-sm">
                       <img src={encodeURI(url)} alt="citizen" className="w-full h-full object-cover transition-all duration-500 hover:scale-110" />
                     </div>
                   ))}
@@ -219,18 +219,18 @@ const Hero = () => {
             </div>
 
             {/* Quick trust indicators */}
-            <div className="mt-12 flex items-center gap-8 opacity-40">
-              <div className="flex items-center gap-2 text-white">
-                <ShieldCheck className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">Souverain</span>
+            <div className="mt-12 w-full flex items-center justify-between sm:justify-start sm:gap-8 opacity-40">
+              <div className="flex items-center gap-1.5 text-white">
+                <ShieldCheck className="w-4 h-4 shrink-0" />
+                <span className="font-bold uppercase whitespace-nowrap" style={{ fontSize: 'clamp(7px, 2.2vw, 10px)', letterSpacing: 'clamp(0.05em, 0.5vw, 0.15em)' }}>Souverain</span>
               </div>
-              <div className="flex items-center gap-2 text-white">
-                <Database className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">Immutable</span>
+              <div className="flex items-center gap-1.5 text-white">
+                <Database className="w-4 h-4 shrink-0" />
+                <span className="font-bold uppercase whitespace-nowrap" style={{ fontSize: 'clamp(7px, 2.2vw, 10px)', letterSpacing: 'clamp(0.05em, 0.5vw, 0.15em)' }}>Immutable</span>
               </div>
-              <div className="flex items-center gap-2 text-white">
-                <Fingerprint className="w-5 h-5" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">Biométrique</span>
+              <div className="flex items-center gap-1.5 text-white">
+                <Fingerprint className="w-4 h-4 shrink-0" />
+                <span className="font-bold uppercase whitespace-nowrap" style={{ fontSize: 'clamp(7px, 2.2vw, 10px)', letterSpacing: 'clamp(0.05em, 0.5vw, 0.15em)' }}>Biométrique</span>
               </div>
             </div>
           </motion.div>

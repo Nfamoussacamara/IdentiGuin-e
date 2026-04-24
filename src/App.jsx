@@ -8,6 +8,7 @@ import Solution from './components/sections/Solution';
 import Portal from './components/sections/Portal';
 import Blockchain from './components/sections/Blockchain';
 import Impact from './components/sections/Impact';
+import Team from './components/sections/Team';
 import Contact from './components/sections/Contact';
 import BackToTop from './components/ui/BackToTop';
 import MeshBackground from './components/ui/MeshBackground';
@@ -38,6 +39,7 @@ function App() {
         <Portal />
         <Blockchain />
         <Impact />
+        <Team />
         <Contact />
       </main>
 

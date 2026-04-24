@@ -65,8 +65,7 @@ const timelineSteps = [
 
 function AnimatedCounter({ target, suffix, isPrefix }) {
   const ref = useRef(null);
-  // On attend que l'utilisateur ait bien scrollé pour lancer l'effet
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
   
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => {

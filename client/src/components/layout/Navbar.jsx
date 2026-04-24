@@ -54,7 +54,7 @@ const Navbar = () => {
               <img 
                 src="/logo.png" 
                 alt="IdentiGuinée Logo" 
-                className={`h-14 sm:h-20 w-auto transition-all duration-300 group-hover:scale-105 ${
+                className={`h-16 sm:h-24 w-auto transition-all duration-300 group-hover:scale-105 ${
                   !isScrolled && !isMobileMenuOpen ? 'brightness-0 invert' : ''
                 }`} 
               />

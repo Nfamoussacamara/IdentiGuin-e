@@ -185,21 +185,21 @@ const Portal = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex justify-center gap-8 text-text-muted font-mono text-sm mb-10 border-t border-border pt-8"
+            className="flex flex-wrap justify-center items-center gap-x-4 gap-y-6 sm:gap-8 text-text-muted font-mono text-xs sm:text-sm mb-10 border-t border-border pt-8"
           >
             <div className="flex flex-col items-center">
-              <span className="text-text-primary text-3xl font-bold font-display">247</span>
-              <span>Demandes/jour</span>
+              <span className="text-text-primary text-2xl sm:text-3xl font-bold font-display">247</span>
+              <span className="text-[10px] sm:text-sm text-center">Demandes/jour</span>
             </div>
-            <div className="w-px h-12 bg-border"></div>
+            <div className="hidden xs:block w-px h-8 sm:h-12 bg-border"></div>
             <div className="flex flex-col items-center">
-              <span className="text-green text-3xl font-bold font-display">2m 14s</span>
-              <span>Temps moyen</span>
+              <span className="text-green text-2xl sm:text-3xl font-bold font-display">2m 14s</span>
+              <span className="text-[10px] sm:text-sm text-center">Temps moyen</span>
             </div>
-            <div className="w-px h-12 bg-border"></div>
+            <div className="hidden xs:block w-px h-8 sm:h-12 bg-border"></div>
             <div className="flex flex-col items-center">
-              <span className="text-text-primary text-3xl font-bold font-display">100%</span>
-              <span>Automatisé</span>
+              <span className="text-text-primary text-2xl sm:text-3xl font-bold font-display">100%</span>
+              <span className="text-[10px] sm:text-sm text-center">Automatisé</span>
             </div>
           </motion.div>
 

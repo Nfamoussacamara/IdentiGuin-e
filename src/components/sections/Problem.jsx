@@ -66,7 +66,7 @@ const timelineSteps = [
 function AnimatedCounter({ target, suffix, isPrefix }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px" });
-  
+
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => {
     const val = Math.floor(latest);
@@ -98,7 +98,7 @@ export default function Problem() {
     <section id="probleme" className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5faf6' }}>
       {/* Texture */}
 
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section header */}
         <div className="mb-16 reveal-on-scroll">
@@ -113,7 +113,7 @@ export default function Problem() {
         </div>
 
         {/* Stat Cards Grid */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -163,15 +163,15 @@ export default function Problem() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Timeline */}
           <div className="reveal-on-scroll">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-danger/20">
-                  <img src={encodeURI("/Guinée tech lab/profil.jpeg")} alt="Citizen" className="w-full h-full object-cover" />
-                </div>
-                <h3 className="font-heading font-bold text-xl text-text-primary">
-                  Parcours d'un citoyen aujourd'hui
-                </h3>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-danger/20">
+                <img src={encodeURI("/Guinée tech lab/profil.jpeg")} alt="Citizen" className="w-full h-full object-cover" />
               </div>
-            <motion.div 
+              <h3 className="font-heading font-bold text-xl text-text-primary">
+                Parcours d'un citoyen aujourd'hui
+              </h3>
+            </div>
+            <motion.div
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-50px" }}
@@ -185,7 +185,7 @@ export default function Problem() {
               className="space-y-4"
             >
               {timelineSteps.map((step, i) => (
-                <motion.div 
+                <motion.div
                   key={step.step}
                   variants={{
                     hidden: { opacity: 0, x: -20 },
@@ -200,7 +200,7 @@ export default function Problem() {
                   <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-surface border-2 border-danger flex items-center justify-center flex-shrink-0 z-10">
                     <span className="text-xs font-bold font-heading text-danger">{step.step}</span>
                   </div>
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.007, x: 4 }}
                     className="glass-card rounded-xl p-5 transition-all cursor-default"
                   >
@@ -214,16 +214,16 @@ export default function Problem() {
 
           {/* Consequences + Context */}
           <div className="reveal-on-scroll delay-200">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.005, y: -2 }}
               className="bg-surface rounded-2xl p-8 border border-border mb-6 relative overflow-hidden transition-all cursor-default"
             >
 
               <h3 className="font-heading font-bold text-lg text-text-primary mb-6 flex items-center gap-2">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE1126" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                  <line x1="12" y1="9" x2="12" y2="13"/>
-                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
                 </svg>
                 Conséquences documentées
               </h3>
@@ -266,7 +266,7 @@ export default function Problem() {
             <div className="mt-8 p-6 bg-dark rounded-2xl text-white relative overflow-hidden">
               <div className="absolute -right-4 -top-4 w-16 h-16 bg-danger/20 rounded-full blur-2xl"></div>
               <p className="text-sm leading-relaxed relative z-10">
-                <span className="text-danger font-bold font-heading text-base block mb-2">Le principe est simple :</span> 
+                <span className="text-danger font-bold font-heading text-base block mb-2">Le principe est simple :</span>
                 Plus la procédure est opaque et manuelle, plus elle crée d'opportunités de corruption. La solution doit rendre la délivrance de documents d'identité aussi <strong className="text-white font-bold">automatique, transparente et sans intermédiaire</strong> que possible.
               </p>
             </div>

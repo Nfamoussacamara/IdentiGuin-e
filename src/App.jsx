@@ -28,10 +28,10 @@ function App() {
       <AnimatePresence>
         {loading && <Preloader />}
       </AnimatePresence>
-      
+
       <MeshBackground />
       <Navbar />
-      
+
       <main className="flex-grow">
         <Hero />
         <Problem />

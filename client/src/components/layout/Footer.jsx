@@ -19,11 +19,14 @@ const Footer = () => {
           
           {/* Gauche : Logo + tagline + badges ODD */}
           <div className="flex flex-col gap-6">
-            <a href="#" className="flex items-center gap-2">
-              <Shield className="w-8 h-8 text-white" strokeWidth={2.5} />
-              <span className="font-display font-bold text-2xl tracking-tight text-white">
-                IdentiGuinée
-              </span>
+            <a href="#" className="flex items-center gap-2 group">
+              <div className="relative">
+                <img 
+                  src="/logo.png" 
+                  alt="IdentiGuinée Logo" 
+                  className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 brightness-0 invert" 
+                />
+              </div>
             </a>
             <p className="font-body text-white/70 text-sm max-w-xs">
               La plateforme d'état civil nouvelle génération. Zéro corruption. Zéro intermédiaire. 100% automatisée.

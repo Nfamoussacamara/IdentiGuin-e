@@ -44,20 +44,21 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-surface/90 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'
+          isScrolled ? 'bg-surface/90 backdrop-blur-md shadow-sm py-1' : 'bg-transparent py-2'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between relative">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <Shield className={`w-8 h-8 transition-colors duration-300 ${
-              isScrolled || isMobileMenuOpen ? 'text-green' : 'text-white'
-            }`} strokeWidth={2.5} />
-            <span className={`font-display font-bold text-xl tracking-tight transition-colors duration-300 ${
-              isScrolled || isMobileMenuOpen ? 'text-dark' : 'text-white'
-            }`}>
-              IdentiGuinée
-            </span>
+          <a href="#" className="flex items-center gap-2 group">
+            <div className="relative">
+              <img 
+                src="/logo.png" 
+                alt="IdentiGuinée Logo" 
+                className={`h-14 sm:h-20 w-auto transition-all duration-300 group-hover:scale-105 ${
+                  !isScrolled && !isMobileMenuOpen ? 'brightness-0 invert' : ''
+                }`} 
+              />
+            </div>
           </a>
 
           {/* DESKTOP NAV */}

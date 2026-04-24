@@ -219,7 +219,7 @@ const Hero = () => {
             </div>
 
             {/* Quick trust indicators */}
-            <div className="mt-12 w-full flex items-center justify-between sm:justify-start sm:gap-8 opacity-40">
+            <div className="mt-12 w-full flex items-center justify-between sm:justify-start sm:gap-8 opacity-90">
               <div className="flex items-center gap-1.5 text-white">
                 <ShieldCheck className="w-4 h-4 shrink-0" />
                 <span className="font-bold uppercase whitespace-nowrap" style={{ fontSize: 'clamp(7px, 2.2vw, 10px)', letterSpacing: 'clamp(0.05em, 0.5vw, 0.15em)' }}>Souverain</span>
@@ -257,9 +257,9 @@ const Hero = () => {
       <motion.div 
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-1/4 opacity-10"
+        className="absolute top-1/4 right-1/4 opacity-5"
       >
-        <Zap className="w-32 h-32 text-green" fill="currentColor" />
+        <Zap className="w-32 h-32 text-white" fill="currentColor" />
       </motion.div>
     </section>
   );

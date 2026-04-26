@@ -5,11 +5,11 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', organization: '', message: '' });
   const [status, setStatus] = useState('idle'); // 'idle' | 'success' | 'error'
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       setStatus('error');

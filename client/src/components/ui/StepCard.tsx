@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-const StepCard = ({ number, title, icon: Icon, description, isLast }) => {
+interface StepCardProps {
+  number: string | number;
+  title: string;
+  icon: any;
+  description: string;
+  isLast?: boolean;
+}
+
+const StepCard = ({ number, title, icon: Icon, description, isLast }: StepCardProps) => {
   return (
     <motion.div 
       variants={{

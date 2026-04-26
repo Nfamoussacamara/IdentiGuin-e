@@ -63,7 +63,13 @@ const timelineSteps = [
   },
 ];
 
-function AnimatedCounter({ target, suffix, isPrefix }) {
+interface CounterProps {
+  target: number;
+  suffix?: string;
+  isPrefix?: boolean;
+}
+
+function AnimatedCounter({ target, suffix = '', isPrefix = false }: CounterProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px" });
 

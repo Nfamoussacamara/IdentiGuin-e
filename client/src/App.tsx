@@ -3,25 +3,25 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AnimatePresence } from 'framer-motion';
 
 // Layouts & UI
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import BackToTop from './components/ui/BackToTop';
-import MeshBackground from './components/ui/MeshBackground';
-import Preloader from './components/ui/Preloader';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import BackToTop from '@/components/ui/BackToTop';
+import MeshBackground from '@/components/ui/MeshBackground';
+import Preloader from '@/components/ui/Preloader';
 
 // Landing Sections
-import Hero from './components/sections/Hero';
-import Problem from './components/sections/Problem';
-import Solution from './components/sections/Solution';
-import Portal from './components/sections/Portal';
-import Blockchain from './components/sections/Blockchain';
-import Impact from './components/sections/Impact';
-import Team from './components/sections/Team';
-import Contact from './components/sections/Contact';
+import Hero from '@/components/sections/Hero';
+import Problem from '@/components/sections/Problem';
+import Solution from '@/components/sections/Solution';
+import Portal from '@/components/sections/Portal';
+import Blockchain from '@/components/sections/Blockchain';
+import Impact from '@/components/sections/Impact';
+import Team from '@/components/sections/Team';
+import Contact from '@/components/sections/Contact';
 
 // Lazy Loaded Dashboard (Isolation Strategy)
-const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'));
-const DashboardHome = lazy(() => import('./pages/DashboardHome'));
+const DashboardLayout = lazy(() => import('@/layouts/DashboardLayout'));
+const DashboardHome = lazy(() => import('@/pages/DashboardHome'));
 
 const LandingPage = () => (
   <div className="flex flex-col min-h-screen relative overflow-x-hidden bg-bg">

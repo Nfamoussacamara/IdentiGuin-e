@@ -8,7 +8,7 @@ const screens = [
   { id: "04", title: "Document certifié", desc: "Armoiries · QR code · PDF signé", img: "/4.png" },
 ];
 
-const ScreenCard = ({ id, title, desc, img }) => (
+const ScreenCard = ({ id, title, desc, img }: { id: string, title: string, desc: string, img: string }) => (
   <motion.div
     variants={{
       hidden: { opacity: 0, scale: 0.95, y: 20 },

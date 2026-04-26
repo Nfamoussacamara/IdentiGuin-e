@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion';
 import AnimatedCounter from './AnimatedCounter';
 
-const StatCard = ({ value, label, color, delay = 0 }) => {
+interface StatCardProps {
+  value: number;
+  label: string;
+  color: 'red' | 'gold';
+  delay?: number;
+}
+
+const StatCard = ({ value, label, color, delay = 0 }: StatCardProps) => {
   const numColor = {
     red: "text-white",
     gold: "text-white",

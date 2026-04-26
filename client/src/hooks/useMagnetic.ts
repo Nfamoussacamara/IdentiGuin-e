@@ -8,9 +8,10 @@ export const useMagnetic = (strength = 0.5) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: any) => {
+    if (!ref.current) return;
     const { clientX, clientY } = e;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const { left, top, width, height } = (ref.current as any).getBoundingClientRect();
     
     // Calcul du centre de l'élément
     const centerX = left + width / 2;

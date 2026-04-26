@@ -17,7 +17,7 @@ const comparisons = [
   { before: "Interactions physiques aux guichets", after: "Accessible partout depuis un smartphone" },
 ];
 
-const TargetCard = ({ icon: Icon, title }) => (
+const TargetCard = ({ icon: Icon, title }: { icon: any, title: string }) => (
   <motion.div 
     whileHover={{ y: -4 }}
     className="glass-card p-6 rounded-2xl flex items-center gap-4 transition-all"

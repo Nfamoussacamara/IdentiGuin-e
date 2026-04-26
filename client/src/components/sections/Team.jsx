@@ -4,22 +4,22 @@ import { Globe } from 'lucide-react';
 const teamMembers = [
   {
     name: "Camara N'famoussa",
-    role: "Chef de Projet / Tech Lead",
+    role: "Chef de Groupe",
     image: "/Guinée tech lab/profil.jpeg",
   },
   {
     name: "Abdoul Aziz Diallo",
-    role: "Développeur Full-Stack",
+    role: "Membre",
     image: "/Guinée tech lab/Abdoul Aziz Diallo.jpeg",
   },
   {
     name: "Diallo Sonna Halimatou",
-    role: "Product Designer / UI UX",
+    role: "Membre",
     image: "/Guinée tech lab/Diallo Sonna Halimatou.jpeg",
   },
   {
     name: "KABA Sanoussy",
-    role: "Ingénieur Blockchain",
+    role: "Membre",
     image: "/Guinée tech lab/KABA Sanoussy.jpeg",
   }
 ];

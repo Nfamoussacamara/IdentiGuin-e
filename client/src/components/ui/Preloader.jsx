@@ -21,7 +21,7 @@ const Preloader = () => {
             scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
             opacity: { duration: 1, ease: "easeOut" }
           }}
-          className="relative z-10 mb-12"
+          className="relative z-10 mb-4"
         >
           <img src="/logo.png" alt="IdentiGuinée Logo" className="w-48 sm:w-64 h-auto drop-shadow-2xl" />
         </motion.div>

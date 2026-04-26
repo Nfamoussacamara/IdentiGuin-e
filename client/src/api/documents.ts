@@ -1,22 +1,12 @@
+/**
+ * api/documents.ts
+ * Logique d'accès aux données uniquement — pas d'interfaces ici.
+ * Les types sont importés depuis @/types.
+ */
 import client from './client';
+import type { IDemande, IStats, IProfile } from '@/types';
 
-export interface IDemande {
-  id: number;
-  reference: string;
-  type_document: string;
-  statut: string;
-  citoyen: any;
-  hash_blockchain?: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface IStats {
-  SOUMIS: number;
-  EN_TRAITEMENT: number;
-  REJETE: number;
-  ACCEPTE: number;
-}
+export type { IDemande, IStats, IProfile };
 
 export const getDemandes = async (): Promise<IDemande[]> => {
   const response = await client.get<IDemande[]>('/demandes/');
@@ -32,5 +22,10 @@ export const createDemande = async (formData: FormData): Promise<IDemande> => {
 
 export const getDashboardStats = async (): Promise<IStats> => {
   const response = await client.get<IStats>('/demandes/stats/');
+  return response.data;
+};
+
+export const getProfile = async (): Promise<IProfile> => {
+  const response = await client.get<IProfile>('/auth/me/');
   return response.data;
 };

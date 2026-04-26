@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, Trophy, GraduationCap, Briefcase, 
-  Users, Phone, Moon, Grid, ChevronDown 
+  Users, Phone, Moon, Grid, ChevronDown, LogOut
 } from 'lucide-react';
+import { useProfile } from '@/hooks/useProfile';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+  const { profile, initiales, isLoading } = useProfile();
 
   const menuItems = [
     { name: 'Tableau de bord', icon: <LayoutDashboard size={20} />, path: '/dashboard' },
@@ -70,9 +72,22 @@ const DashboardLayout = () => {
             </div>
             
             <button className="flex items-center space-x-3 bg-[#23965F] hover:brightness-110 text-white px-4 py-2.5 rounded-full shadow-lg shadow-green-900/10 transition-all">
-                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-xs">NC</div>
-                <span className="text-sm font-bold">N'famoussa Camara</span>
-                <ChevronDown size={18} />
+                {isLoading ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-white/20 animate-pulse" />
+                    <div className="w-28 h-3 rounded bg-white/20 animate-pulse" />
+                  </div>
+                ) : (
+                  <>
+                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-xs">
+                      {initiales}
+                    </div>
+                    <span className="text-sm font-bold">
+                      {profile?.nom_complet ?? 'Citoyen'}
+                    </span>
+                    <ChevronDown size={18} />
+                  </>
+                )}
             </button>
           </div>
         </header>

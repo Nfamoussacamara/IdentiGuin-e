@@ -11,3 +11,8 @@ export const createDemande = async (formData) => {
   });
   return response.data;
 };
+
+export const getDashboardStats = async () => {
+  const response = await client.get('/demandes/stats/');
+  return response.data;
+};

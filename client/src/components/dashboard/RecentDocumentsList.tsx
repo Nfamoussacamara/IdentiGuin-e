@@ -1,4 +1,4 @@
-import { IDemande } from '../../api/documents';
+import type { IDemande } from '@/types';
 
 interface RecentDocumentsListProps {
   demandes: IDemande[];

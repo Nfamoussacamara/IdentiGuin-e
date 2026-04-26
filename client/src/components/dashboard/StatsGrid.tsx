@@ -1,5 +1,5 @@
 import { Star, FileText, AlertCircle, CheckCircle } from 'lucide-react';
-import { IStats } from '../../api/documents';
+import type { IStats } from '@/types';
 import AnimatedCounter from '../ui/AnimatedCounter';
 
 interface StatsGridProps {

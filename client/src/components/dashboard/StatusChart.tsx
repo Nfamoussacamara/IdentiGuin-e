@@ -1,5 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { IStats } from '../../api/documents';
+import type { IStats } from '@/types';
 
 interface StatusChartProps {
   stats: IStats;

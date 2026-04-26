@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDashboardStats, getDemandes, IStats, IDemande } from '@/api/documents';
+import { getDashboardStats, getDemandes } from '@/api/documents';
+import type { IStats, IDemande } from '@/types';
+
 
 export const useDashboardData = () => {
   const { data: stats, isLoading: loadingStats, error: errorStats } = useQuery<IStats>({

@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+
+// Layouts & UI
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import BackToTop from './components/ui/BackToTop';
+import MeshBackground from './components/ui/MeshBackground';
+import Preloader from './components/ui/Preloader';
+
+// Landing Sections
 import Hero from './components/sections/Hero';
 import Problem from './components/sections/Problem';
 import Solution from './components/sections/Solution';
@@ -10,42 +18,60 @@ import Blockchain from './components/sections/Blockchain';
 import Impact from './components/sections/Impact';
 import Team from './components/sections/Team';
 import Contact from './components/sections/Contact';
-import BackToTop from './components/ui/BackToTop';
-import MeshBackground from './components/ui/MeshBackground';
-import Preloader from './components/ui/Preloader';
+
+// Lazy Loaded Dashboard (Isolation Strategy)
+const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'));
+const DashboardHome = lazy(() => import('./pages/DashboardHome'));
+
+const LandingPage = () => (
+  <div className="flex flex-col min-h-screen relative overflow-x-hidden bg-bg">
+    <MeshBackground />
+    <Navbar />
+    <main className="flex-grow">
+      <Hero />
+      <Problem />
+      <Solution />
+      <Portal />
+      <Blockchain />
+      <Impact />
+      <Team />
+      <Contact />
+    </main>
+    <Footer />
+    <BackToTop />
+  </div>
+);
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulation d'un chargement premium
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-x-hidden">
+    <Router>
       <AnimatePresence>
         {loading && <Preloader />}
       </AnimatePresence>
 
-      <MeshBackground />
-      <Navbar />
+      <Suspense fallback={<div className="h-screen w-screen bg-dashboard-bg flex items-center justify-center font-bold text-dashboard-sidebar">Chargement sécurisé...</div>}>
+        <Routes>
+          {/* Landing Page */}
+          <Route path="/" element={<LandingPage />} />
 
-      <main className="flex-grow">
-        <Hero />
-        <Problem />
-        <Solution />
-        <Portal />
-        <Blockchain />
-        <Impact />
-        <Team />
-        <Contact />
-      </main>
+          {/* Dashboard - Total Isolation */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="demandes" element={<DashboardHome />} />
+          </Route>
 
-      <Footer />
-      <BackToTop />
-    </div>
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
 }
 

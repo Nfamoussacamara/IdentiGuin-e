@@ -18,23 +18,27 @@ const Login: React.FC = () => {
     setError(null);
 
     try {
-      // Endpoint d'authentification (à ajuster selon votre backend Django)
-      const response = await client.post('/auth/token/', {
-        email,
+      // On s'assure que le localStorage est propre
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+
+      // Le validateur attend la clé 'email' comme confirmé par l'inspection
+      const response = await client.post('/auth/connexion/', {
+        email: email,
         password,
       });
 
       const { access, refresh } = response.data;
-      localStorage.setItem('access_token', access);
-      localStorage.setItem('refresh_token', refresh);
-      
-      // Redirection vers le dashboard après succès
-      navigate('/dashboard');
+      if (access && refresh) {
+        localStorage.setItem('access_token', access);
+        localStorage.setItem('refresh_token', refresh);
+        navigate('/dashboard');
+      }
     } catch (err: any) {
       console.error("Erreur de connexion:", err);
       setError(
         err.response?.data?.detail || 
-        "Identifiants invalides. Veuillez réessayer."
+        "Identifiants invalides ou erreur serveur. Veuillez réessayer."
       );
     } finally {
       setIsLoading(false);
@@ -187,12 +191,15 @@ const Login: React.FC = () => {
               className="w-full bg-green hover:bg-green-dark text-white font-display font-bold py-4 rounded-2xl shadow-xl shadow-green/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3 group disabled:opacity-70"
             >
               {isLoading ? (
-                <Loader2 className="animate-spin" size={20} />
+                <div key="loader" className="flex items-center gap-2">
+                  <Loader2 className="animate-spin" size={20} />
+                  <span>Traitement...</span>
+                </div>
               ) : (
-                <>
+                <div key="content" className="flex items-center gap-2">
                   Se connecter
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </>
+                </div>
               )}
             </button>
           </form>

@@ -68,7 +68,10 @@ function App() {
           {/* Dashboard - Total Isolation */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardHome />} />
-            <Route path="demandes" element={<DashboardHome />} />
+            <Route path="documents" element={<DashboardHome />} />
+            <Route path="demandes/nouvelle" element={<DashboardHome />} />
+            <Route path="verification" element={<DashboardHome />} />
+            <Route path="profil" element={<DashboardHome />} />
           </Route>
 
           {/* Fallback */}

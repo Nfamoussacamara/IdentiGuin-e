@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { 
-  LayoutDashboard, Trophy, GraduationCap, Briefcase, 
-  Users, Phone, Moon, Grid, ChevronDown, LogOut
+  LayoutDashboard, FileText, PlusCircle, ShieldCheck, 
+  User, Moon, Grid, ChevronDown, LogOut
 } from 'lucide-react';
 import { useProfile } from '@/hooks/useProfile';
 
@@ -13,11 +13,10 @@ const DashboardLayout = () => {
 
   const menuItems = [
     { name: 'Tableau de bord', icon: <LayoutDashboard size={20} />, path: '/dashboard' },
-    { name: 'Concours', icon: <Trophy size={20} />, path: '/dashboard/concours' },
-    { name: 'Formations', icon: <GraduationCap size={20} />, path: '/dashboard/formations' },
-    { name: 'Gérer mes projets', icon: <Briefcase size={20} />, path: '/dashboard/projets' },
-    { name: 'Accompagnements', icon: <Users size={20} />, path: '/dashboard/accompagnements' },
-    { name: 'Nous contacter', icon: <Phone size={20} />, path: '/dashboard/contact' },
+    { name: 'Mes Documents', icon: <FileText size={20} />, path: '/dashboard/documents' },
+    { name: 'Nouvelle Demande', icon: <PlusCircle size={20} />, path: '/dashboard/demandes/nouvelle' },
+    { name: 'Vérification', icon: <ShieldCheck size={20} />, path: '/dashboard/verification' },
+    { name: 'Mon Profil', icon: <User size={20} />, path: '/dashboard/profil' },
   ];
 
   return (

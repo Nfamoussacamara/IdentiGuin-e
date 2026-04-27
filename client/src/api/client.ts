@@ -24,6 +24,7 @@ client.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const refreshToken = localStorage.getItem('refresh_token');
+      
       if (refreshToken) {
         try {
           const response = await axios.post(`${API_URL}/auth/token/refresh/`, {
@@ -34,6 +35,15 @@ client.interceptors.response.use(
         } catch (refreshError) {
           localStorage.removeItem('access_token');
           localStorage.removeItem('refresh_token');
+          if (window.location.pathname !== '/login') {
+            window.location.href = '/login';
+          }
+        }
+      } else {
+        // Aucun token de secours : on nettoie et on sort du dashboard
+        localStorage.removeItem('access_token');
+        if (window.location.pathname !== '/login') {
+          window.location.href = '/login';
         }
       }
     }

@@ -19,9 +19,10 @@ import Impact from '@/components/sections/Impact';
 import Team from '@/components/sections/Team';
 import Contact from '@/components/sections/Contact';
 
-// Lazy Loaded Dashboard (Isolation Strategy)
+// Lazy Loaded Pages (Isolation Strategy)
 const DashboardLayout = lazy(() => import('@/layouts/DashboardLayout'));
 const DashboardHome = lazy(() => import('@/pages/DashboardHome'));
+const Login = lazy(() => import('@/pages/Login'));
 
 const LandingPage = () => (
   <div className="flex flex-col min-h-screen relative overflow-x-hidden bg-bg">
@@ -60,6 +61,9 @@ function App() {
         <Routes>
           {/* Landing Page */}
           <Route path="/" element={<LandingPage />} />
+
+          {/* Authentication */}
+          <Route path="/login" element={<Login />} />
 
           {/* Dashboard - Total Isolation */}
           <Route path="/dashboard" element={<DashboardLayout />}>

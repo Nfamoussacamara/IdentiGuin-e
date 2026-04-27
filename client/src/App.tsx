@@ -21,8 +21,12 @@ import Contact from '@/components/sections/Contact';
 
 // Lazy Loaded Pages (Isolation Strategy)
 const DashboardLayout = lazy(() => import('@/layouts/DashboardLayout'));
-const DashboardHome = lazy(() => import('@/pages/DashboardHome'));
-const Login = lazy(() => import('@/pages/Login'));
+const Login = lazy(() => import('./pages/Login'));
+const DashboardHome = lazy(() => import('./pages/DashboardHome'));
+const MyDocuments = lazy(() => import('./pages/dashboard/MyDocuments'));
+const NewRequest = lazy(() => import('./pages/dashboard/NewRequest'));
+const BlockchainVerify = lazy(() => import('./pages/dashboard/BlockchainVerify'));
+const Profile = lazy(() => import('./pages/dashboard/Profile'));
 
 const LandingPage = () => (
   <div className="flex flex-col min-h-screen relative overflow-x-hidden bg-bg">
@@ -68,10 +72,10 @@ function App() {
           {/* Dashboard - Total Isolation */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardHome />} />
-            <Route path="documents" element={<DashboardHome />} />
-            <Route path="demandes/nouvelle" element={<DashboardHome />} />
-            <Route path="verification" element={<DashboardHome />} />
-            <Route path="profil" element={<DashboardHome />} />
+            <Route path="documents" element={<MyDocuments />} />
+            <Route path="demandes/nouvelle" element={<NewRequest />} />
+            <Route path="verification" element={<BlockchainVerify />} />
+            <Route path="profil" element={<Profile />} />
           </Route>
 
           {/* Fallback */}

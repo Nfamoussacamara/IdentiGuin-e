@@ -1,16 +1,58 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FileText, CreditCard, BookOpen, ArrowRight, ShieldCheck, Upload, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FileText, CreditCard, BookOpen, ArrowRight, ShieldCheck, Upload, Info, Loader2, CheckCircle } from 'lucide-react';
+import { createDemande } from '@/api/documents';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const documentTypes = [
-  { id: 'BIRTH', name: 'Extrait de Naissance', icon: <FileText className="text-blue-500" />, desc: 'Copie intégrale ou extrait d\'acte de naissance informatisé.' },
+  { id: 'EXTRAIT_NAIS', name: 'Extrait de Naissance', icon: <FileText className="text-blue-500" />, desc: 'Copie intégrale ou extrait d\'acte de naissance informatisé.' },
   { id: 'CNI', name: 'Carte d\'Identité (CNI)', icon: <CreditCard className="text-green" />, desc: 'Nouvelle carte d\'identité biométrique sécurisée.' },
-  { id: 'PASSPORT', name: 'Passeport Ordinaire', icon: <BookOpen className="text-red-500" />, desc: 'Document de voyage électronique valide 5 ou 10 ans.' },
+  { id: 'PASSEPORT', name: 'Passeport Ordinaire', icon: <BookOpen className="text-red-500" />, desc: 'Document de voyage électronique valide 5 ou 10 ans.' },
 ];
 
 const NewRequest: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [step, setStep] = useState(1);
+  const [files, setFiles] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!selectedType) return;
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      await createDemande(selectedType, files);
+      toast.success("Votre demande a été envoyée avec succès !");
+      setIsSuccess(true);
+      setTimeout(() => navigate('/dashboard/documents'), 2000);
+    } catch (err: any) {
+      toast.error(err.response?.data?.detail || "Une erreur est survenue lors de la soumission.");
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSuccess) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 space-y-6 text-center">
+        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-24 h-24 bg-green/10 text-green rounded-full flex items-center justify-center">
+          <CheckCircle size={48} />
+        </motion.div>
+        <h2 className="text-2xl font-display font-black text-dark">Demande envoyée !</h2>
+        <p className="text-text-muted">Votre demande a été enregistrée. Redirection vers vos documents...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 pb-12">
@@ -19,78 +61,94 @@ const NewRequest: React.FC = () => {
         <p className="text-text-muted font-body">Sélectionnez le type de document que vous souhaitez obtenir.</p>
       </div>
 
-      {step === 1 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {documentTypes.map((type) => (
-            <motion.button
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedType(type.id)}
-              key={type.id}
-              className={`p-6 bg-white border-2 rounded-3xl text-left transition-all ${
-                selectedType === type.id ? 'border-green shadow-xl shadow-green/10' : 'border-border hover:border-green/30'
-              }`}
-            >
-              <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-6">
-                {type.icon}
-              </div>
-              <h3 className="font-display font-bold text-dark mb-2">{type.name}</h3>
-              <p className="text-text-muted text-xs leading-relaxed mb-6">{type.desc}</p>
-              <div className={`flex items-center gap-2 text-xs font-bold ${selectedType === type.id ? 'text-green' : 'text-gray-400'}`}>
-                SÉLECTIONNER <ArrowRight size={14} />
-              </div>
-            </motion.button>
-          ))}
-        </div>
-      ) : (
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="bg-white border border-border rounded-3xl p-8 shadow-sm"
-        >
-          <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-50">
-             <button onClick={() => setStep(1)} className="text-text-muted hover:text-green font-bold text-sm">← Retour</button>
-             <div className="h-4 w-px bg-border"></div>
-             <span className="font-display font-bold text-dark">Formulaire : {documentTypes.find(t => t.id === selectedType)?.name}</span>
-          </div>
-          
-          <div className="space-y-6">
-             <div className="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex gap-3 text-blue-800 text-sm">
-                <Info size={20} className="shrink-0" />
-                <p>Vos informations d'état civil seront automatiquement récupérées via <strong>NaissanceChain</strong> pour garantir l'exactitude des données.</p>
-             </div>
+      <AnimatePresence mode="wait">
+        {step === 1 ? (
+          <motion.div 
+            key="step1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {documentTypes.map((type) => (
+              <motion.button
+                whileHover={{ y: -5 }}
+                onClick={() => setSelectedType(type.id)}
+                key={type.id}
+                className={`p-6 bg-white border-2 rounded-3xl text-left transition-all ${
+                  selectedType === type.id ? 'border-green shadow-xl shadow-green/10' : 'border-border hover:border-green/30'
+                }`}
+              >
+                <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-6">
+                  {type.icon}
+                </div>
+                <h3 className="font-display font-bold text-dark mb-2">{type.name}</h3>
+                <p className="text-text-muted text-xs leading-relaxed mb-6">{type.desc}</p>
+                <div className={`flex items-center gap-2 text-xs font-bold ${selectedType === type.id ? 'text-green' : 'text-gray-400'}`}>
+                  SÉLECTIONNER <ArrowRight size={14} />
+                </div>
+              </motion.button>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="step2"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="bg-white border border-border rounded-3xl p-8 shadow-sm"
+          >
+            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-50">
+               <button onClick={() => setStep(1)} className="text-text-muted hover:text-green font-bold text-sm">← Retour</button>
+               <div className="h-4 w-px bg-border"></div>
+               <span className="font-display font-bold text-dark">Formulaire : {documentTypes.find(t => t.id === selectedType)?.name}</span>
+            </div>
+            
+            <div className="space-y-6">
+               <div className="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex gap-3 text-blue-800 text-sm">
+                  <Info size={20} className="shrink-0" />
+                  <p>Vos informations d'état civil seront automatiquement récupérées via <strong>NaissanceChain</strong> pour garantir l'exactitude des données.</p>
+               </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                   <label className="text-xs font-bold text-gray-500 uppercase ml-1">Motif de la demande</label>
-                   <select className="w-full bg-gray-50 border border-border rounded-xl p-3 outline-none focus:ring-2 focus:ring-green/20">
-                      <option>Première délivrance</option>
-                      <option>Renouvellement</option>
-                      <option>Perte / Vol</option>
-                   </select>
-                </div>
-                <div className="space-y-2">
-                   <label className="text-xs font-bold text-gray-500 uppercase ml-1">Lieu de retrait souhaité</label>
-                   <select className="w-full bg-gray-50 border border-border rounded-xl p-3 outline-none focus:ring-2 focus:ring-green/20">
-                      <option>Mairie de Matam (Conakry)</option>
-                      <option>Mairie de Ratoma (Conakry)</option>
-                      <option>Direction de la Police aux Frontières</option>
-                   </select>
-                </div>
-             </div>
+               {/* Global errors are now handled by toasts */}
 
-             <div className="space-y-4">
-                <label className="text-xs font-bold text-gray-500 uppercase ml-1">Documents justificatifs (PDF/JPG)</label>
-                <div className="border-2 border-dashed border-border rounded-3xl p-12 text-center hover:border-green/50 transition-colors cursor-pointer group">
-                   <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mx-auto mb-4 group-hover:bg-green/10 group-hover:text-green transition-colors">
-                      <Upload size={24} />
-                   </div>
-                   <p className="text-sm font-bold text-dark">Cliquez pour téléverser vos fichiers</p>
-                   <p className="text-xs text-text-muted mt-1">Glissez-déposez vos pièces d'identité ou justificatifs de domicile</p>
-                </div>
-             </div>
-          </div>
-        </motion.div>
-      )}
+               <div className="space-y-4">
+                  <label className="text-xs font-bold text-gray-500 uppercase ml-1">Documents justificatifs (PDF/JPG)</label>
+                  <label className="border-2 border-dashed border-border rounded-3xl p-12 text-center hover:border-green/50 transition-colors cursor-pointer group block">
+                     <input type="file" multiple className="hidden" onChange={handleFileChange} />
+                     <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mx-auto mb-4 group-hover:bg-green/10 group-hover:text-green transition-colors">
+                        <Upload size={24} />
+                     </div>
+                     <p className="text-sm font-bold text-dark">
+                        {files.length > 0 ? `${files.length} fichier(s) sélectionné(s)` : "Cliquez pour téléverser vos fichiers"}
+                     </p>
+                     <p className="text-xs text-text-muted mt-1">Glissez-déposez vos pièces d'identité ou justificatifs de domicile</p>
+                  </label>
+                  
+                  {files.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {files.map((file, i) => (
+                        <span key={i} className="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold text-gray-600">
+                          {file.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+               </div>
+
+               <div className="pt-6">
+                 <button 
+                   onClick={handleSubmit}
+                   disabled={isSubmitting}
+                   className="w-full bg-green text-white font-display font-black py-4 rounded-2xl shadow-xl shadow-green/20 flex items-center justify-center gap-3 disabled:opacity-70"
+                 >
+                   {isSubmitting ? <Loader2 className="animate-spin" /> : "SOUMETTRE LA DEMANDE"}
+                 </button>
+               </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {selectedType && step === 1 && (
         <motion.div 

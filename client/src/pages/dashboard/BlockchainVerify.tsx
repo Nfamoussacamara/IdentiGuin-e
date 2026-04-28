@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Search, QrCode, Fingerprint, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Search, QrCode, Fingerprint, AlertTriangle, CheckCircle2, Loader2, FileText } from 'lucide-react';
+import { toast } from 'sonner';
+import client from '@/api/client';
 
 const BlockchainVerify: React.FC = () => {
   const [hash, setHash] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
-  const [result, setResult] = useState<'success' | 'error' | null>(null);
+  const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleVerify = (e: React.FormEvent) => {
+  const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!hash) return;
     
     setIsVerifying(true);
     setResult(null);
+    setError(null);
     
-    // Simulation de vérification blockchain
-    setTimeout(() => {
+    try {
+      const response = await client.get(`/verification/rechercher/?q=${hash}`);
+      setResult(response.data);
+      toast.success("Document authentifié avec succès sur la blockchain !");
+    } catch (err: any) {
+      const msg = err.response?.data?.detail || "Erreur lors de la vérification.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
       setIsVerifying(false);
-      setResult(hash.length > 10 ? 'success' : 'error');
-    }, 2000);
+    }
   };
 
   return (
@@ -50,7 +60,7 @@ const BlockchainVerify: React.FC = () => {
              disabled={isVerifying}
              className="bg-green hover:bg-green-dark text-white px-8 rounded-2xl font-display font-black transition-all flex items-center gap-2 disabled:opacity-50"
            >
-              {isVerifying ? 'ANALYSE...' : 'VÉRIFIER'}
+              {isVerifying ? <Loader2 className="animate-spin" size={20} /> : 'VÉRIFIER'}
            </button>
         </form>
         
@@ -68,31 +78,37 @@ const BlockchainVerify: React.FC = () => {
          </button>
       </div>
 
-      {result && (
+      {(result || error) && (
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className={`p-8 rounded-[2rem] border-4 flex flex-col items-center gap-4 ${
-            result === 'success' ? 'bg-green-light border-green/30 text-green' : 'bg-red-light border-red/30 text-red'
+          className={`p-8 rounded-[2rem] border-4 flex flex-col items-center gap-6 ${
+            result ? 'bg-green-light border-green/30 text-green' : 'hidden'
           }`}
         >
-          {result === 'success' ? (
+          {result ? (
             <>
               <CheckCircle2 size={64} className="animate-bounce" />
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <h3 className="text-2xl font-display font-black uppercase italic">Document Authentique</h3>
-                <p className="text-sm opacity-80">Ancrage blockchain confirmé : Bloc #847,291</p>
+                <div className="bg-white/50 p-4 rounded-2xl space-y-2 text-left border border-green/10">
+                   <div className="flex justify-between gap-8">
+                      <span className="text-[10px] font-bold opacity-60 uppercase">Type</span>
+                      <span className="text-xs font-bold">{result.type_document}</span>
+                   </div>
+                   <div className="flex justify-between gap-8">
+                      <span className="text-[10px] font-bold opacity-60 uppercase">Référence</span>
+                      <span className="text-xs font-mono font-bold">{result.reference}</span>
+                   </div>
+                   <div className="flex justify-between gap-8">
+                      <span className="text-[10px] font-bold opacity-60 uppercase">Délivré le</span>
+                      <span className="text-xs font-bold">{new Date(result.created_at).toLocaleDateString()}</span>
+                   </div>
+                </div>
+                <p className="text-[10px] opacity-60 mt-4">Ancrage blockchain confirmé sur le réseau NaissanceChain</p>
               </div>
             </>
-          ) : (
-            <>
-              <AlertTriangle size={64} className="animate-pulse" />
-              <div className="space-y-1">
-                <h3 className="text-2xl font-display font-black uppercase italic">Référence Invalide</h3>
-                <p className="text-sm opacity-80">Ce document ne figure pas sur le registre distribué officiel.</p>
-              </div>
-            </>
-          )}
+          ) : null}
         </motion.div>
       )}
     </div>

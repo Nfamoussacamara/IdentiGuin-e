@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Toaster } from 'sonner';
 
 // Layouts & UI
 import Navbar from '@/components/layout/Navbar';
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <Router>
+      <Toaster position="bottom-right" richColors closeButton />
       <AnimatePresence>
         {loading && <Preloader />}
       </AnimatePresence>

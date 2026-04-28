@@ -13,15 +13,24 @@ export const getDemandes = async (): Promise<IDemande[]> => {
   return response.data;
 };
 
-export const createDemande = async (formData: FormData): Promise<IDemande> => {
-  const response = await client.post<IDemande>('/demandes/', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+export const getDashboardStats = async (): Promise<IStats> => {
+  const response = await client.get<IStats>('/demandes/stats/');
   return response.data;
 };
 
-export const getDashboardStats = async (): Promise<IStats> => {
-  const response = await client.get<IStats>('/demandes/stats/');
+export const createDemande = async (typeDocument: string, files: File[]): Promise<IDemande> => {
+  const formData = new FormData();
+  formData.append('type_document', typeDocument);
+  
+  files.forEach((file) => {
+    formData.append('pieces_fichiers', file);
+  });
+
+  const response = await client.post<IDemande>('/demandes/', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return response.data;
 };
 

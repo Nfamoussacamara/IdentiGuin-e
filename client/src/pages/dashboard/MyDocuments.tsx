@@ -103,7 +103,7 @@ const MyDocuments: React.FC = () => {
                         <span className="font-body font-semibold text-dark text-sm">{doc.type_document}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-body text-sm text-text-muted">{doc.date_demande}</td>
+                    <td className="px-6 py-4 font-body text-sm text-text-muted">{new Date(doc.created_at).toLocaleDateString()}</td>
                     <td className="px-6 py-4">
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase border ${getStatusStyle(doc.statut)}`}>
                         {getStatusIcon(doc.statut)}
@@ -111,9 +111,9 @@ const MyDocuments: React.FC = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      {doc.hash_blockchain ? (
+                      {doc.blockchain_tx_hash ? (
                         <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
-                          <span className="truncate w-24">{doc.hash_blockchain}</span>
+                          <span className="truncate w-24">{doc.blockchain_tx_hash}</span>
                           <div className="w-2 h-2 rounded-full bg-green animate-pulse"></div>
                         </div>
                       ) : (

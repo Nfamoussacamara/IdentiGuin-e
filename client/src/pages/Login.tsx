@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Mail, Lock, ArrowRight, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'sonner';
 import client from '@/api/client';
 
 const Login: React.FC = () => {
@@ -32,11 +33,12 @@ const Login: React.FC = () => {
       if (access && refresh) {
         localStorage.setItem('access_token', access);
         localStorage.setItem('refresh_token', refresh);
+        toast.success("Connexion réussie ! Bienvenue sur votre espace citoyen.");
         navigate('/dashboard');
       }
     } catch (err: any) {
       console.error("Erreur de connexion:", err);
-      setError(
+      toast.error(
         err.response?.data?.detail || 
         "Identifiants invalides ou erreur serveur. Veuillez réessayer."
       );
@@ -130,16 +132,7 @@ const Login: React.FC = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {error && (
-              <motion.div 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-red-light border border-red/20 text-red text-sm px-4 py-3 rounded-xl flex items-center gap-3 font-body"
-              >
-                <div className="w-1.5 h-1.5 bg-red rounded-full"></div>
-                {error}
-              </motion.div>
-            )}
+            {/* Global errors are now handled by toasts */}
 
             <div className="space-y-2">
               <label className="text-sm font-display font-bold text-dark ml-1">Email ou Identifiant</label>

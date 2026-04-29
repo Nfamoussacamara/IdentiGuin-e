@@ -13,7 +13,8 @@ psycopg2-binary==2.*
 weasyprint==62.*
 qrcode[pil]==7.*
 Pillow==10.*
-web3==6.*
+# Bibliothèques métier & Sécurité
+web3>=6.20.0
 pytest==8.*
 pytest-django==4.*
 factory-boy==3.*

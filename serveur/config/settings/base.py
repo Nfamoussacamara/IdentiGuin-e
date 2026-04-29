@@ -61,7 +61,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # On définit le dossier global des templates (Haut Niveau)
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -150,9 +151,56 @@ SIMPLE_JWT = {
 }
 
 # Spectacular Settings
+# --- DOCUMENTATION : OpenAPI 3.1 (Phase 4) ---
+# Configuration de drf-spectacular pour générer une documentation interactive et précise.
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'IdentiGuinée API',
-    'DESCRIPTION': 'API pour le portail national d\'identité numérique de Guinée',
-    'VERSION': '1.0.0',
+    'TITLE': 'IdentiGuinée V2 API',
+    'DESCRIPTION': (
+        'Plateforme nationale de délivrance de documents d\'identité certifiés par Blockchain.\n\n'
+        'Cette API permet aux citoyens de demander leurs documents et aux institutions '
+        'de vérifier l\'authenticité via NaissanceChain.'
+    ),
+    'VERSION': '2.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+    'CONTACT': {
+        'name': 'Équipe Technique IdentiGuinée',
+        'email': 'tech@identiguinee.gn',
+    },
+    'LICENSE': {
+        'name': 'Proprietary',
+    },
+    # Utilisation de Redoc et Swagger UI
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,
+        'displayOperationId': True,
+    },
 }
+
+# --- SÉCURITÉ : Rate Limiting (Phase 4) ---
+# Utilisation de django-ratelimit pour protéger les endpoints sensibles.
+# On utilise le cache Redis pour une performance maximale et une persistance des compteurs.
+RATELIMIT_CACHE = 'default'
+RATELIMIT_ENABLE = True
+RATELIMIT_USE_CACHE = 'default'
+# Message d'erreur personnalisé en cas de dépassement (Haut Niveau)
+RATELIMIT_VIEW = 'apps.common.views.ratelimit_error'
+
+# --- CONFIGURATION CELERY & REDIS ---
+# URL du broker (Redis est utilisé pour stocker la file d'attente des tâches)
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:6379/0')
+
+# URL du backend de résultats (Redis stocke ici le résultat/statut des tâches)
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://localhost:6379/0')
+
+# Format de sérialisation des données (JSON est le standard sécurisé)
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+# Fuseau horaire des tâches (synchronisé avec Django)
+CELERY_TIMEZONE = TIME_ZONE
+
+# Sécurité : Si une tâche échoue, elle peut être re-tentée automatiquement
+# (configuré au niveau de la tâche elle-même avec @shared_task)
+CELERY_TASK_ALWAYS_EAGER = config('CELERY_TASK_ALWAYS_EAGER', default=False, cast=bool)

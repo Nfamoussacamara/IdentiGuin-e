@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <g fill-opacity="1">
+    <rect width="120" height="120" fill="transparent" />
+    <path fill="#009A44" d="M0 0h20v20h-20zM20 20h20v20h-20zM40 0h20v20h-20zM60 20h20v20h-20z" />
+    <path fill="#FCD116" d="M0 40h20v20h-20zM20 60h20v20h-20zM40 40h20v20h-20zM60 60h20v20h-20z" />
+    <path fill="#CE1126" d="M0 80h20v20h-20zM20 100h20v20h-20zM40 80h20v20h-20zM60 100h20v20h-20z" />
+    <path fill="#0D1B12" d="M80 0h20v20h-20zM100 20h20v20h-20zM80 40h20v20h-20zM100 60h20v20h-20zM80 80h20v20h-20zM100 100h20v20h-20z" />
+    <!-- Diagonal stripes for kente texture -->
+    <path fill="#009A44" d="M20 0 L40 20 L20 20 Z" />
+    <path fill="#FCD116" d="M0 20 L20 40 L0 40 Z" />
+    <path fill="#CE1126" d="M40 20 L60 40 L40 40 Z" />
+  </g>
+</svg>

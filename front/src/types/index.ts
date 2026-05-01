@@ -40,7 +40,7 @@ export interface IDemande {
   type_document: string;
   statut: string;
   citoyen: any;
-  hash_blockchain?: string;
+  blockchain_tx_hash?: string;
   created_at: string;
   updated_at: string;
 }

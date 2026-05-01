@@ -31,6 +31,7 @@ def create_mock_cni():
             'date_naissance': datetime.date(1995, 5, 15),
             'lieu_naissance': 'Conakry',
             'numero_registre_naissance': 'REG-1995-12345',
+            'numero_citoyen': 'GN-2026-M456',
             'nin': '1950515123456',
             'genre': 'M',
             'taille': 1.75,
@@ -71,11 +72,11 @@ def create_mock_cni():
         with open(output_file, "wb") as f:
             f.write(pdf_content)
         
-        print(f"✅ SUCCÈS ! La carte a été générée : {os.path.abspath(output_file)}")
+        print(f"SUCCES ! La carte a été générée : {os.path.abspath(output_file)}")
         print("Tu peux maintenant ouvrir ce fichier pour voir le résultat final.")
         
     except Exception as e:
-        print(f"❌ ERREUR lors de la génération : {e}")
+        print(f"ERREUR lors de la génération : {e}")
         import traceback
         traceback.print_exc()
 

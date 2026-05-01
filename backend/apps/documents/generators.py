@@ -80,6 +80,12 @@ class DocumentGenerator:
             with open(file_path, "rb") as f:
                 return base64.b64encode(f.read()).decode()
         except FileNotFoundError:
+            import logging
+            logging.error(f"Fichier image non trouvé pour base64 : {file_path}")
+            return ""
+        except Exception as e:
+            import logging
+            logging.error(f"Erreur lors de la conversion de l'image {file_path} : {e}")
             return ""
 
     @classmethod
@@ -112,6 +118,7 @@ class DocumentGenerator:
             sig_auth_path = os.path.join(base_public, "signature_directeur-removebg-preview.png")
             logo_cedao_path = os.path.join(base_public, "CEDEAO_Logo.svg")
             logo_afrique_ouest_path = os.path.join(base_public, "logo_afrique_ouest.png")
+            logo_identiguinee_path = os.path.join(base_public, "logo.png")
             image_identite_path = os.path.join(base_public, "image_identite_fixed.png")
 
             # Calcul de la date d'expiration (5 ans après émission)
@@ -123,6 +130,7 @@ class DocumentGenerator:
                 'signature_auth_base64': cls._image_to_base64(sig_auth_path),
                 'logo_cedao_svg': cls._image_to_base64(logo_cedao_path),
                 'logo_afrique_ouest_base64': cls._image_to_base64(logo_afrique_ouest_path),
+                'logo_identiguinee_base64': cls._image_to_base64(logo_identiguinee_path),
                 'image_identite_base64': cls._image_to_base64(image_identite_path),
                 'exp_date': expiration_date,
             })
@@ -148,6 +156,10 @@ class DocumentGenerator:
 
         # 3. Rendu du HTML
         html_string = render_to_string(template_name, context)
+
+        # DEBUG: Sauvegarde du HTML pour inspection
+        with open(os.path.join(settings.BASE_DIR, "debug_card.html"), "w", encoding="utf-8") as f:
+            f.write(html_string)
         
         # 4. Conversion HTML -> PDF via WeasyPrint (Le plus puissant support CSS)
         try:
